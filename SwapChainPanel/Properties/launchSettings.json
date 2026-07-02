@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SwapChainPanel (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "SwapChainPanel (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
