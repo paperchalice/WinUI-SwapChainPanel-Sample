@@ -31,7 +31,7 @@
     <DesktopCompatible>true</DesktopCompatible>
     <UseWinUI>true</UseWinUI>
     <WinUISDKReferences>false</WinUISDKReferences>
-	<CppWinRTBuildModule>true</CppWinRTBuildModule>
+    <CppWinRTBuildModule>true</CppWinRTBuildModule>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <ItemGroup Label="ProjectConfigurations">
@@ -136,6 +136,7 @@
       <DependentUpon>DirectXPanelBase.cpp</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="ModulePreamble.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Class.h">
       <DependentUpon>Class.cpp</DependentUpon>
@@ -226,5 +227,20 @@
     <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.28000.2270\build\Microsoft.Windows.SDK.BuildTools.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.BuildTools.10.0.28000.2270\build\Microsoft.Windows.SDK.BuildTools.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.28000.2270\build\Microsoft.Windows.SDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.BuildTools.10.0.28000.2270\build\Microsoft.Windows.SDK.BuildTools.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.ImplementationLibrary.1.0.260126.7\build\native\Microsoft.Windows.ImplementationLibrary.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.ImplementationLibrary.1.0.260126.7\build\native\Microsoft.Windows.ImplementationLibrary.targets'))" />
+  </Target>
+	<!-- Inject module imports into XAML-generated source files -->
+  <Target Name="InjectModuleImportsIntoXamlGenerated"
+		AfterTargets="ComputeXamlGeneratedCompileInputs"
+		BeforeTargets="ClCompile">
+	<ItemGroup>
+	  <ClCompile Update="@(ClCompile)"
+				 Condition="'%(Filename)' == 'XamlTypeInfo.g'
+                         or '%(Filename)' == 'XamlTypeInfo.Impl.g'
+                         or '%(Filename)' == 'XamlMetaDataProvider'
+                         or '%(Filename)' == 'XamlLibMetadataProvider.g'">
+		  <PrecompiledHeader>NotUsing</PrecompiledHeader>
+	    <ForcedIncludeFiles>$(MSBuildProjectDirectory)\ModulePreamble.h</ForcedIncludeFiles>
+	  </ClCompile>
+	</ItemGroup>
   </Target>
 </Project>
