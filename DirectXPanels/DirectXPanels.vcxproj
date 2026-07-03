@@ -18,7 +18,7 @@
     <CppWinRTOptimized>true</CppWinRTOptimized>
     <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
     <MinimalCoreWin>true</MinimalCoreWin>
-    <ProjectGuid>{da4ac4ba-e133-4fd2-a287-e98dbfa3ec96}</ProjectGuid>
+    <ProjectGuid>{5ADDABA6-2F00-2EC6-B4D3-C7F83BBB2B84}</ProjectGuid>
     <ProjectName>DirectXPanels</ProjectName>
     <RootNamespace>DirectXPanels</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -143,6 +143,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DirectXHelper.ixx" />
     <ClCompile Include="DirectXPanelBase.cpp">
       <SubType>Code</SubType>
     </ClCompile>
@@ -228,19 +229,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.28000.2270\build\Microsoft.Windows.SDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.BuildTools.10.0.28000.2270\build\Microsoft.Windows.SDK.BuildTools.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.ImplementationLibrary.1.0.260126.7\build\native\Microsoft.Windows.ImplementationLibrary.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.ImplementationLibrary.1.0.260126.7\build\native\Microsoft.Windows.ImplementationLibrary.targets'))" />
   </Target>
-	<!-- Inject module imports into XAML-generated source files -->
-  <Target Name="InjectModuleImportsIntoXamlGenerated"
-		AfterTargets="ComputeXamlGeneratedCompileInputs"
-		BeforeTargets="ClCompile">
-	<ItemGroup>
-	  <ClCompile Update="@(ClCompile)"
-				 Condition="'%(Filename)' == 'XamlTypeInfo.g'
-                         or '%(Filename)' == 'XamlTypeInfo.Impl.g'
-                         or '%(Filename)' == 'XamlMetaDataProvider'
-                         or '%(Filename)' == 'XamlLibMetadataProvider.g'">
-		  <PrecompiledHeader>NotUsing</PrecompiledHeader>
-	    <ForcedIncludeFiles>$(MSBuildProjectDirectory)\ModulePreamble.h</ForcedIncludeFiles>
-	  </ClCompile>
-	</ItemGroup>
-  </Target>
+  <!-- Inject module imports into XAML-generated source files -->
+  <!--Target Name="InjectModuleImportsIntoXamlGenerated" AfterTargets="ComputeXamlGeneratedCompileInputs" BeforeTargets="ClCompile">
+    <ItemGroup>
+      <ClCompile Update="@(ClCompile)" Condition="'%(Filename)' == 'XamlTypeInfo.g'&#xD;&#xA;                         or '%(Filename)' == 'XamlTypeInfo.Impl.g'&#xD;&#xA;                         or '%(Filename)' == 'XamlMetaDataProvider'&#xD;&#xA;                         or '%(Filename)' == 'XamlLibMetadataProvider.g'">
+        <PrecompiledHeader>NotUsing</PrecompiledHeader>
+        <ForcedIncludeFiles>$(MSBuildProjectDirectory)\ModulePreamble.h</ForcedIncludeFiles>
+      </ClCompile>
+    </ItemGroup>
+  </Target-->
 </Project>

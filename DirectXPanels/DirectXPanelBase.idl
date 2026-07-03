@@ -1,0 +1,7 @@
+namespace DirectXPanels
+{
+    [default_interface] unsealed runtimeclass DirectXPanelBase : Microsoft.UI.Xaml.Controls.SwapChainPanel
+    {
+        DirectXPanelBase();
+    }
+}
