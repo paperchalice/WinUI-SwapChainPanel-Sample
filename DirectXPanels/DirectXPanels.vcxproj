@@ -132,6 +132,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="D2DPanel.h">
+      <DependentUpon>D2DPanel.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="DirectXPanelBase.h">
       <DependentUpon>DirectXPanelBase.cpp</DependentUpon>
       <SubType>Code</SubType>
@@ -143,6 +147,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="D2DPanel.cpp">
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="DirectXHelper.ixx" />
     <ClCompile Include="DirectXPanelBase.cpp">
       <SubType>Code</SubType>
@@ -157,6 +164,10 @@
     <Midl Include="Class.idl">
       <SubType>Code</SubType>
       <DependentUpon>Class.cpp</DependentUpon>
+    </Midl>
+    <Midl Include="D2DPanel.idl">
+      <DependentUpon>D2DPanel.cpp</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="DirectXPanelBase.idl">
       <DependentUpon>DirectXPanelBase.cpp</DependentUpon>

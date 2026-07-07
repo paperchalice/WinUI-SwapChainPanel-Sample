@@ -25,3 +25,4 @@
 #include <winrt/Microsoft.UI.Dispatching.h>
 #include <wil/cppwinrt_helpers.h>
 #include "DirectXPanelBase.h"
+#include "D2DPanel.h"

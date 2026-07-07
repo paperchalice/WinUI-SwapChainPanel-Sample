@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="SwapChainPanel.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SwapChainPanel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="BaseStatusStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe UI Semilight" />
+            <Setter Property="FontSize" Value="14.667" />
+            <Setter Property="Margin" Value="0,0,0,5" />
+        </Style>
+        <Style
+            x:Key="StatusStyle"
+            BasedOn="{StaticResource BaseStatusStyle}"
+            TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Green" />
+        </Style>
+        <Style
+            x:Key="ErrorStyle"
+            BasedOn="{StaticResource BaseStatusStyle}"
+            TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Blue" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid
+            x:Name="ContentRoot"
+            Margin="100,20,100,20"
+            Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  Header  -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Image
+                    x:Name="WindowsLogo"
+                    Grid.Column="0"
+                    MaxWidth="30"
+                    MaxHeight="30"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Windows Logo"
+                    Source="https://learn.microsoft.com/en-us/windows/apps/images/hub-wasdk.svg"
+                    Stretch="Uniform" />
+                <TextBlock
+                    Grid.Column="1"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource TitleTextStyle}"
+                    Text="Windows App SDK Samples"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+            <ScrollViewer
+                x:Name="MainScrollViewer"
+                Grid.Row="1"
+                Padding="0,0,0,20"
+                HorizontalScrollBarVisibility="Auto"
+                IsTabStop="False"
+                VerticalScrollBarVisibility="Auto"
+                ZoomMode="Disabled">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock
+                        x:Name="FeatureName"
+                        Grid.Row="0"
+                        Style="{StaticResource HeaderTextStyle}"
+                        Text="Add Sample Title Here"
+                        TextWrapping="Wrap" />
+
+                    <!--  Content  -->
+                    <Grid Grid.Row="1">
+
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
+                                Grid.Row="0"
+                                Style="{StaticResource H2Style}"
+                                Text="Input" />
+
+                            <TextBlock
+                                x:Name="ScenarioListLabel"
+                                Grid.Row="1"
+                                Margin="0,5,0,0"
+                                Style="{StaticResource SubheaderTextStyle}"
+                                Text="Select Scenario:" />
+                            <ListBox
+                                x:Name="Scenarios"
+                                Grid.Row="2"
+                                MaxHeight="125"
+                                Margin="0,0,20,0"
+                                Padding="0,0,27,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                AutomationProperties.LabeledBy="{Binding ElementName=ScenarioListLabel}"
+                                AutomationProperties.Name="Scenarios"
+                                ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Name}" />
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <TextBlock
+                                x:Name="DescriptionText"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,5,0,0"
+                                Style="{StaticResource SubheaderTextStyle}"
+                                Text="Description:" />
+
+                            <!--  Input Scenarios  -->
+                            <UserControl
+                                x:Name="InputSection"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                MaxWidth="{Binding ElementName=MainScrollViewer, Path=ActualWidth}"
+                                Margin="0,5,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                IsTabStop="False" />
+
+                            <!--  Output section  -->
+                            <TextBlock
+                                Grid.Row="5"
+                                Grid.ColumnSpan="2"
+                                Margin="0,25,0,20"
+                                Style="{StaticResource H2Style}"
+                                Text="Output" />
+                            <TextBlock
+                                x:Name="StatusBlock"
+                                Grid.Row="6"
+                                Grid.ColumnSpan="2"
+                                Margin="0,0,0,5"
+                                Visibility="Collapsed" />
+
+                            <!--  Output Scenarios  -->
+                            <UserControl
+                                x:Name="OutputSection"
+                                Grid.Row="7"
+                                Grid.ColumnSpan="2"
+                                BorderThickness="0" />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+
+            <!--  Footer  -->
+            <Grid
+                x:Name="Footer"
+                Grid.Row="3"
+                Margin="0,10,0,10"
+                VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Grid.Row="0"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="Microsoft Logo"
+                    Source="https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png"
+                    Stretch="None" />
+                <TextBlock
+                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource FooterStyle}"
+                    Text="© Microsoft Corporation. All rights reserved."
+                    TextWrapping="Wrap" />
+                <StackPanel
+                    x:Name="FooterPanel"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Orientation="Horizontal">
+                    <HyperlinkButton
+                        Click="HyperlinkButton_Click"
+                        Content="Terms of use"
+                        FontSize="12"
+                        Style="{StaticResource HyperlinkStyle}"
+                        Tag="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Copyright/default.aspx" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SeparatorStyle}"
+                        Text="|" />
+                    <HyperlinkButton
+                        Click="HyperlinkButton_Click"
+                        Content="Trademarks"
+                        FontSize="12"
+                        Style="{StaticResource HyperlinkStyle}"
+                        Tag="http://www.microsoft.com/About/Legal/EN/US/IntellectualProperty/Trademarks/EN-US.aspx" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SeparatorStyle}"
+                        Text="|" />
+                    <HyperlinkButton
+                        Click="HyperlinkButton_Click"
+                        Content="Privacy Statement"
+                        FontSize="12"
+                        Style="{StaticResource HyperlinkStyle}"
+                        Tag="http://privacy.microsoft.com" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <VisualStateManager.VisualStateGroups>
+            <!--  Visual states reflect the application's window size  -->
+            <VisualStateGroup>
+                <VisualState x:Name="DefaultLayout">
+                    <Storyboard />
+                </VisualState>
+
+                <VisualState x:Name="Below768Layout">
+                    <Storyboard>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentRoot" Storyboard.TargetProperty="(FrameworkElement.Margin)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Thickness>20,20,20,20</Thickness>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FooterPanel" Storyboard.TargetProperty="(FrameworkElement.HorizontalAlignment)">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <HorizontalAlignment>Left</HorizontalAlignment>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

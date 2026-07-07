@@ -179,10 +179,8 @@ void DirectXPanelBase::CreateSizeDependentResources()
 
         DispatcherQueue().TryEnqueue([=]() {
             // Get backing native interface for SwapChainPanel.
-            com_ptr<ISwapChainPanelNative> panelNative;
-            com_ptr<::IUnknown> panel;
-            panel.attach(reinterpret_cast<::IUnknown *>(this));
-            panel.as(panelNative);
+            Windows::Foundation::IUnknown panel = *this;
+            auto panelNative = panel.as<ISwapChainPanelNative>();
 
             // Associate swap chain with SwapChainPanel.  This must be done on the UI thread.
             ThrowIfFailed(panelNative->SetSwapChain(m_swapChain.get()));

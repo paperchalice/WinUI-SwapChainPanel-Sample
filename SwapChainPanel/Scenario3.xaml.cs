@@ -5,7 +5,6 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
-using SwapChainPanel.Contracts.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,20 +19,13 @@ using Windows.Foundation.Collections;
 namespace SwapChainPanel
 {
     /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainWindow : Window
+    public sealed partial class Scenario3 : Page
     {
-        public MainWindow()
+        public Scenario3()
         {
             InitializeComponent();
-        }
-
-        private void Frame_Loaded(object sender, RoutedEventArgs e)
-        {
-            var app = (App)Application.Current;
-            var navigationService = app.GetRequiredService<INavigationService>();
-            navigationService?.Frame?.Navigate(typeof(MainPage));
         }
     }
 }

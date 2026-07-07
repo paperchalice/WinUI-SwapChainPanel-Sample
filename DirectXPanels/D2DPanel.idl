@@ -1,0 +1,9 @@
+import "DirectXPanelBase.idl";
+
+namespace DirectXPanels
+{
+    [default_interface] runtimeclass D2DPanel : DirectXPanels.DirectXPanelBase
+    {
+        D2DPanel();
+    }
+}
