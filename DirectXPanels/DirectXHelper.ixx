@@ -48,12 +48,32 @@ inline void ThrowIfFailed(HRESULT hr)
 // Function that reads from a binary file asynchronously.
 inline task<std::vector<byte>> ReadDataAsync(const std::wstring &filename)
 {
-    StorageFolder folder = Package::Current().InstalledLocation();
-     StorageFile file = co_await folder.GetFileAsync(filename);
-     Streams::IBuffer fileBuffer = co_await FileIO::ReadBufferAsync(file);
-     std::vector<byte> returnBuffer;
-     returnBuffer.resize(fileBuffer.Length());
-     Streams::DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer);
-     co_return returnBuffer;
+    // StorageFolder folder = Package::Current().InstalledLocation();
+    std::wstring prefixBuffer(256, L'\0');
+    GetModuleFileNameW(nullptr, prefixBuffer.data(), static_cast<DWORD>(prefixBuffer.size()));
+    while (GetLastError() == ERROR_INSUFFICIENT_BUFFER)
+    {
+        prefixBuffer.resize(2 * prefixBuffer.size(), L'\0');
+        GetModuleFileNameW(nullptr, prefixBuffer.data(), static_cast<DWORD>(prefixBuffer.size()));
+    }
+    std::filesystem::path prefix(prefixBuffer);
+    auto folderPath = prefix.parent_path();
+    auto filePath = folderPath / filename;
+
+    return create_task([filePath]() -> task<std::vector<byte>> {
+        auto file = co_await StorageFile::GetFileFromPathAsync(filePath.c_str());
+        Streams::IBuffer fileBuffer = co_await FileIO::ReadBufferAsync(file);
+        std::vector<byte> returnBuffer;
+        returnBuffer.resize(fileBuffer.Length());
+        Streams::DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer);
+        co_return returnBuffer;
+    });
+
+    //auto file = co_await StorageFile::GetFileFromPathAsync(filePath.c_str());
+    //Streams::IBuffer fileBuffer = co_await FileIO::ReadBufferAsync(file);
+    //std::vector<byte> returnBuffer;
+    //returnBuffer.resize(fileBuffer.Length());
+    //Streams::DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer);
+    //co_return returnBuffer;
 }
 } // namespace DX

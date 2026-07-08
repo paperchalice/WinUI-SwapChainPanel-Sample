@@ -17,6 +17,9 @@
     <ClCompile Include="DirectXPanelBase.cpp" />
     <ClCompile Include="D2DPanel.cpp" />
     <ClCompile Include="D3DPanel.cpp" />
+    <ClCompile Include="DX.ixx" />
+    <ClCompile Include="ShaderStructures.ixx" />
+    <ClCompile Include="StepTimer.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -35,5 +38,9 @@
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="SimpleVertexShader.hlsl" />
+    <FxCompile Include="SimplePixelShader.hlsl" />
   </ItemGroup>
 </Project>

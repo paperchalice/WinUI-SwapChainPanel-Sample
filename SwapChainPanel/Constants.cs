@@ -29,7 +29,7 @@ namespace SwapChainPanel
         // The code in MainPage will take care of turning this into: "1) Navigating to a web page"
         readonly List<Scenario> scenarios =
         [
-            //new Scenario() { Title = "SwapChainPanel", ClassType = typeof(Scenario1) },
+            new Scenario() { Title = "SwapChainPanel", ClassType = typeof(Scenario1) },
             //new Scenario() { Title = "Independent Input", ClassType = typeof(Scenario2) },
             new() { Title = "Handling scale changes", ClassType = typeof(Scenario3) },
             //new Scenario() { Title = "Highlighting using CompositeMode", ClassType = typeof(Scenario4) },

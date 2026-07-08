@@ -19,5 +19,6 @@
 
 	<file name="DirectXPanels.dll">
 		<activatableClass name="DirectXPanels.D2DPanel" threadingModel="both" xmlns="urn:schemas-microsoft-com:winrt.v1" />
+		<activatableClass name="DirectXPanels.D3DPanel" threadingModel="both" xmlns="urn:schemas-microsoft-com:winrt.v1" />
 	</file>
 </assembly>

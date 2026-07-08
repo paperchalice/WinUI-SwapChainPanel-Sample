@@ -1,6 +1,8 @@
 module;
 #include "pch.h"
 
+#include <d3d11.h>
+
 #define WINRT_IMPORT_MODULE
 import winrt.DirectXPanels;
 import winrt.Microsoft.UI.Composition;
@@ -106,7 +108,8 @@ void D3DPanel::Render()
     // Each vertex is one instance of the VertexPositionColor struct.
     UINT stride = sizeof(VertexPositionColor);
     UINT offset = 0;
-    m_d3dContext->IASetVertexBuffers(0, 1, m_vertexBuffer.put(), &stride, &offset);
+    ID3D11Buffer *vertexBuffers[1] = {m_vertexBuffer.get()};
+    m_d3dContext->IASetVertexBuffers(0, 1, vertexBuffers, &stride, &offset);
 
     m_d3dContext->IASetIndexBuffer(m_indexBuffer.get(),
                                    DXGI_FORMAT_R16_UINT, // Each index is one 16-bit unsigned integer (short).
@@ -120,7 +123,8 @@ void D3DPanel::Render()
     m_d3dContext->VSSetShader(m_vertexShader.get(), nullptr, 0);
 
     // Send the constant buffer to the Graphics device.
-    m_d3dContext->VSSetConstantBuffers(0, 1, m_constantBuffer.put());
+    ID3D11Buffer *constantBuffers[1] = {m_constantBuffer.get()};
+    m_d3dContext->VSSetConstantBuffers(0, 1, constantBuffers);
 
     // Attach our pixel shader.
     m_d3dContext->PSSetShader(m_pixelShader.get(), nullptr, 0);

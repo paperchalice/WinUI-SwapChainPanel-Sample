@@ -17,6 +17,7 @@
   <ItemGroup>
     <None Remove="MainPage.xaml" />
     <None Remove="sample-utils\SampleTemplateStyles.xaml" />
+    <None Remove="Scenario1.xaml" />
     <None Remove="Scenario3.xaml" />
   </ItemGroup>
 
@@ -52,6 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DirectXPanels\DirectXPanels.vcxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Scenario1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Scenario3.xaml">

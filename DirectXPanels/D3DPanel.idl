@@ -5,5 +5,7 @@ namespace DirectXPanels
     [default_interface] runtimeclass D3DPanel : DirectXPanels.DirectXPanelBase
     {
         D3DPanel();
+        void StartRenderLoop();
+        void StopRenderLoop();
     }
 }

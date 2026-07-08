@@ -11,6 +11,16 @@ export namespace DX
 class StepTimer
 {
   public:
+    StepTimer()
+    {
+        winrt::check_bool(QueryPerformanceFrequency(&m_qpcFrequency));
+     
+        winrt::check_bool(QueryPerformanceCounter(&m_qpcLastTime));
+
+        // Initialize max delta to 1/10 of a second.
+        m_qpcMaxDelta = m_qpcFrequency.QuadPart / 10;
+    }
+
     // Get elapsed time since the previous Update call.
     std::uint64_t GetElapsedTicks() const
     {
