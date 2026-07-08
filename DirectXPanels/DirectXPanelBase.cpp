@@ -6,13 +6,16 @@
 import winrt.DirectXPanels;
 import winrt.Windows.UI.Core;
 import winrt.Microsoft.UI.Composition;
+import winrt.Microsoft.UI.Dispatching;
 import winrt.Microsoft.UI.Xaml;
 import winrt.Microsoft.UI.Xaml.Controls;
 
-import DirectXHelper;
+import DX;
 
-#include "DirectXPanelBase.g.cpp"
+// clang-format off
 #include "DirectXPanelBase.h"
+#include "DirectXPanelBase.g.cpp"
+// clang-format on
 
 using namespace DX;
 using namespace Concurrency;

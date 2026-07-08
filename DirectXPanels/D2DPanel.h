@@ -1,6 +1,9 @@
 #pragma once
+
+// clang-format off
 #include "D2DPanel.g.h"
 #include "DirectXPanelBase.h"
+// clang-format on
 
 #include <d2d1.h>
 

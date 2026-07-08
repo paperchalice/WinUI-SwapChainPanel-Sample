@@ -1,10 +1,19 @@
 module;
 #include "pch.h"
 
-export module DirectXHelper;
+export module DX:DirectXHelper;
 
 import std;
 import std.compat;
+
+import winrt.Windows.ApplicationModel;
+import winrt.Windows.Foundation;
+import winrt.Windows.Storage;
+
+using namespace winrt::Windows::ApplicationModel;
+using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::Storage;
+using namespace concurrency;
 
 export namespace DX
 {
@@ -34,5 +43,17 @@ inline void ThrowIfFailed(HRESULT hr)
     {
         throw com_exception(hr);
     }
+}
+
+// Function that reads from a binary file asynchronously.
+inline task<std::vector<byte>> ReadDataAsync(const std::wstring &filename)
+{
+    StorageFolder folder = Package::Current().InstalledLocation();
+     StorageFile file = co_await folder.GetFileAsync(filename);
+     Streams::IBuffer fileBuffer = co_await FileIO::ReadBufferAsync(file);
+     std::vector<byte> returnBuffer;
+     returnBuffer.resize(fileBuffer.Length());
+     Streams::DataReader::FromBuffer(fileBuffer).ReadBytes(returnBuffer);
+     co_return returnBuffer;
 }
 } // namespace DX

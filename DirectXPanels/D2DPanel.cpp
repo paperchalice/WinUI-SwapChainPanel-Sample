@@ -1,15 +1,17 @@
 #include "pch.h"
 
+#include <d2d1.h>
+
 #define WINRT_IMPORT_MODULE
 import winrt.DirectXPanels;
 import winrt.Microsoft.UI.Composition;
 import winrt.Microsoft.UI.Xaml;
 import winrt.Microsoft.UI.Xaml.Controls;
 
-#include "D2DPanel.g.cpp"
+// clang-format off
 #include "D2DPanel.h"
-
-#include <d2d1.h>
+#include "D2DPanel.g.cpp"
+// clang-format on
 
 using namespace D2D1;
 

@@ -136,6 +136,10 @@
       <DependentUpon>D2DPanel.cpp</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="D3DPanel.h">
+      <DependentUpon>D3DPanel.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="DirectXPanelBase.h">
       <DependentUpon>DirectXPanelBase.cpp</DependentUpon>
       <SubType>Code</SubType>
@@ -150,15 +154,21 @@
     <ClCompile Include="D2DPanel.cpp">
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="D3DPanel.cpp">
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="DirectXHelper.ixx" />
     <ClCompile Include="DirectXPanelBase.cpp">
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="DX.ixx" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Class.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="ShaderStructures.ixx" />
+    <ClCompile Include="StepTimer.ixx" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="Class.idl">
@@ -167,6 +177,10 @@
     </Midl>
     <Midl Include="D2DPanel.idl">
       <DependentUpon>D2DPanel.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="D3DPanel.idl">
+      <DependentUpon>D3DPanel.cpp</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="DirectXPanelBase.idl">
@@ -182,9 +196,6 @@
     <Text Include="readme.txt">
       <DeploymentContent>false</DeploymentContent>
     </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Themes\Generic.xaml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -241,12 +252,12 @@
     <Error Condition="!Exists('..\packages\Microsoft.Windows.ImplementationLibrary.1.0.260126.7\build\native\Microsoft.Windows.ImplementationLibrary.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.ImplementationLibrary.1.0.260126.7\build\native\Microsoft.Windows.ImplementationLibrary.targets'))" />
   </Target>
   <!-- Inject module imports into XAML-generated source files -->
-  <!--Target Name="InjectModuleImportsIntoXamlGenerated" AfterTargets="ComputeXamlGeneratedCompileInputs" BeforeTargets="ClCompile">
+  <Target Name="InjectModuleImportsIntoXamlGenerated" AfterTargets="ComputeXamlGeneratedCompileInputs" BeforeTargets="ClCompile">
     <ItemGroup>
-      <ClCompile Update="@(ClCompile)" Condition="'%(Filename)' == 'XamlTypeInfo.g'&#xD;&#xA;                         or '%(Filename)' == 'XamlTypeInfo.Impl.g'&#xD;&#xA;                         or '%(Filename)' == 'XamlMetaDataProvider'&#xD;&#xA;                         or '%(Filename)' == 'XamlLibMetadataProvider.g'">
+      <ClCompile Update="@(ClCompile)" Condition="'%(Filename)' == 'XamlTypeInfo.g'&#xD;&#xA;                       or '%(Filename)' == 'XamlTypeInfo.Impl.g'&#xD;&#xA;                       or '%(Filename)' == 'XamlMetaDataProvider'&#xD;&#xA;                       or '%(Filename)' == 'XamlLibMetadataProvider.g'">
         <PrecompiledHeader>NotUsing</PrecompiledHeader>
         <ForcedIncludeFiles>$(MSBuildProjectDirectory)\ModulePreamble.h</ForcedIncludeFiles>
       </ClCompile>
     </ItemGroup>
-  </Target-->
+  </Target>
 </Project>

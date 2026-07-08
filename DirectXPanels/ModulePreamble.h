@@ -8,6 +8,7 @@
 import winrt.Windows.Foundation;
 import winrt.Windows.Foundation.Collections;
 import winrt.Windows.System;
+import winrt.Microsoft.UI.Xaml.Markup;
 // ... other namespaces your project needs
 
 // Component modules

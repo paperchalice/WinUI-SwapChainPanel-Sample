@@ -16,6 +16,7 @@
     <ClCompile Include="DirectXHelper.ixx" />
     <ClCompile Include="DirectXPanelBase.cpp" />
     <ClCompile Include="D2DPanel.cpp" />
+    <ClCompile Include="D3DPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -34,8 +35,5 @@
   <ItemGroup>
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
     <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Themes\Generic.xaml" />
   </ItemGroup>
 </Project>
