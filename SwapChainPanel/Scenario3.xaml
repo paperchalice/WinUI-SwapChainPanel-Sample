@@ -53,15 +53,23 @@
             </Grid.ColumnDefinitions>
 
             <!--  A 100x100 image scaled up by 3x to show the result of scaling  -->
-            <Image
+            <Grid
                 Grid.Column="0"
-                Width="100"
-                Height="100"
-                Source="/Assets/ScaledImage.png">
-                <Image.RenderTransform>
-                    <ScaleTransform CenterX="50" CenterY="0" ScaleX="3" ScaleY="3" />
-                </Image.RenderTransform>
-            </Image>
+                Width="300"
+                Height="300"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top">
+                <Image
+                    Width="100"
+                    Height="100"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Source="/Assets/ScaledImage.png">
+                    <Image.RenderTransform>
+                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
 
 
             <!--  A 100x100 SwapChainPanel in a zoomable ScrollViewer which updates its size based on the zoom factor  -->
