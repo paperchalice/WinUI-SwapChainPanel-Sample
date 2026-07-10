@@ -20,6 +20,7 @@
     <None Remove="Scenario1.xaml" />
     <None Remove="Scenario2.xaml" />
     <None Remove="Scenario3.xaml" />
+    <None Remove="Scenario4.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +55,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DirectXPanels\DirectXPanels.vcxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Scenario4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Scenario2.xaml">

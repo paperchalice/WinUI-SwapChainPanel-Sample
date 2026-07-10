@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -36,9 +37,12 @@ namespace SwapChainPanel
             Visibility = Visibility.Collapsed,
         };
 
+        public static MainPage Current { get; private set; } = null!;
+
         public MainPage()
         {
             InitializeComponent();
+            Current = this;
 
             // This frame is hidden, meaning it is never shown.  It is simply used to load
             // each scenario page and then pluck out the input and output sections and

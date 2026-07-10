@@ -22,6 +22,7 @@
     <ClCompile Include="StepTimer.ixx" />
     <ClCompile Include="DrawingPanel.cpp" />
     <ClCompile Include="RecognitionResultUpdatedEventArgs.cpp" />
+    <ClCompile Include="HighlighterPanel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

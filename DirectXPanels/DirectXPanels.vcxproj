@@ -148,6 +148,10 @@
       <DependentUpon>DrawingPanel.cpp</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="HighlighterPanel.h">
+      <DependentUpon>HighlighterPanel.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ModulePreamble.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Class.h">
@@ -173,6 +177,9 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="DX.ixx" />
+    <ClCompile Include="HighlighterPanel.cpp">
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -203,6 +210,10 @@
     </Midl>
     <Midl Include="DrawingPanel.idl">
       <DependentUpon>DrawingPanel.cpp</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="HighlighterPanel.idl">
+      <DependentUpon>HighlighterPanel.cpp</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="RecognitionResultUpdatedEventArgs.idl">

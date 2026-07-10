@@ -32,7 +32,7 @@ namespace SwapChainPanel
             new Scenario() { Title = "SwapChainPanel", ClassType = typeof(Scenario1) },
             //new Scenario() { Title = "Independent Input", ClassType = typeof(Scenario2) },
             new() { Title = "Handling scale changes", ClassType = typeof(Scenario3) },
-            //new Scenario() { Title = "Highlighting using CompositeMode", ClassType = typeof(Scenario4) },
+            new Scenario() { Title = "Highlighting using CompositeMode", ClassType = typeof(Scenario4) },
             //new Scenario() { Title = "Accessibility: UI Automation", ClassType = typeof(Scenario5) }
         ];
     }

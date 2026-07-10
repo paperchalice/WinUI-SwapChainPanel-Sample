@@ -1,0 +1,12 @@
+import "DirectXPanelBase.idl";
+
+namespace DirectXPanels
+{
+[default_interface] runtimeclass HighlighterPanel : DirectXPanels.DirectXPanelBase
+{
+    HighlighterPanel();
+
+    void StartProcessingInput();
+    void StopProcessingInput();
+}
+} // namespace DirectXPanels
