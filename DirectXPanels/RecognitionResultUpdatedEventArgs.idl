@@ -1,0 +1,10 @@
+namespace DirectXPanels
+{
+[default_interface] runtimeclass RecognitionResultUpdatedEventArgs : Microsoft.UI.Xaml.RoutedEventArgs
+{
+    RecognitionResultUpdatedEventArgs();
+    String[] Results;
+}
+
+delegate void RecognitionResultUpdatedEventHandler(Object sender, RecognitionResultUpdatedEventArgs s);
+} // namespace DirectXPanels

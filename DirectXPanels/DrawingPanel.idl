@@ -1,0 +1,45 @@
+import "DirectXPanelBase.idl";
+import "RecognitionResultUpdatedEventArgs.idl";
+
+namespace DirectXPanels
+{
+[default_interface] runtimeclass DrawingPanel : DirectXPanels.DirectXPanelBase
+{
+    DrawingPanel();
+
+    Boolean SaveStrokesToStreamAsync(Windows.Storage.Streams.IRandomAccessStream stream);
+    Boolean LoadStrokesFromStreamAsync(Windows.Storage.Streams.IRandomAccessStream stream);
+    void BeginStrokesReplayFromStream(Windows.Storage.Streams.IRandomAccessStream stream, Int32 intervalInMilliseconds);
+    void StopStrokesReplay();
+
+    // DependencyProperties
+    static Microsoft.UI.Xaml.DependencyProperty BrushColorProperty
+    {
+        get;
+    };
+    Windows.UI.Color BrushColor;
+    static Microsoft.UI.Xaml.DependencyProperty BrushFitsToCurveProperty
+    {
+        get;
+    };
+    Boolean BrushFitsToCurve;
+    static Microsoft.UI.Xaml.DependencyProperty BrushSizeProperty
+    {
+        get;
+    };
+    Windows.Foundation.Size BrushSize;
+    static Microsoft.UI.Xaml.DependencyProperty BrushIsEraserProperty
+    {
+        get;
+    };
+    Boolean BrushIsEraser;
+    Boolean HasContent
+    {
+        get;
+    };
+    // DependencyProperties
+
+    // Raised when handwriting recognition results have been updated.
+    event RecognitionResultUpdatedEventHandler RecognitionResultsUpdated;
+}
+} // namespace DirectXPanels
